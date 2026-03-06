@@ -1,14 +1,14 @@
 [project]
 name = "pydantic-model-example"
-version = "0.1.0"
+version = "0"
 description = "Add your description here"
 readme = "README.md"
 authors = [{ name = "Lev Vereshchagin", email = "mail@vrslev.com" }]
 requires-python = ">=3.10"
 dependencies = [
-    "polyfactory>=3.3.0",
-    "pydantic>=2.12.5",
-    "pydantic-settings>=2.13.1",
+    "polyfactory>=3",
+    "pydantic>=2.10",
+    "pydantic-settings>=2.10",
 ]
 
 [project.scripts]
@@ -20,7 +20,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
-    "auto-typing-final>=1.0.3",
+    "auto-typing-final",
     "community-of-python-flake8-plugin",
     "flake8-pyproject",
     "mypy",

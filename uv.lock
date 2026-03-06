@@ -627,7 +627,7 @@ wheels = [
 
 [[package]]
 name = "pydantic-model-example"
-version = "0.1.0"
+version = "0"
 source = { editable = "." }
 dependencies = [
     { name = "polyfactory" },
@@ -648,14 +648,14 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "polyfactory", specifier = ">=3.3.0" },
-    { name = "pydantic", specifier = ">=2.12.5" },
-    { name = "pydantic-settings", specifier = ">=2.13.1" },
+    { name = "polyfactory", specifier = ">=3" },
+    { name = "pydantic", specifier = ">=2.10" },
+    { name = "pydantic-settings", specifier = ">=2.10" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "auto-typing-final", specifier = ">=1.0.3" },
+    { name = "auto-typing-final" },
     { name = "community-of-python-flake8-plugin" },
     { name = "flake8-pyproject" },
     { name = "mypy" },
