@@ -20,6 +20,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "auto-typing-final>=1.0.3",
     "community-of-python-flake8-plugin",
     "flake8-pyproject",
     "mypy",
