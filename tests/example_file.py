@@ -8,4 +8,4 @@ class ExampleModel(pydantic.BaseModel):
     name: str
     age: int
     email: str
-    is_active: bool = True
+    is_active: bool = pydantic.Field(default=True, alias="isActive")

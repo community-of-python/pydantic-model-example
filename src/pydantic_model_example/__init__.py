@@ -1,5 +1,4 @@
 import importlib.util
-import os
 import pathlib
 import sys
 import typing
@@ -22,9 +21,10 @@ class Settings(pydantic_settings.BaseSettings):
         file_spec.loader.exec_module(file_module)
         if not hasattr(file_module, self.pydantic_model):
             raise AttributeError(f"Module {self.file_path} does not have attribute {self.pydantic_model}")
-        sys.stdout.write(
-            ModelFactory.create_factory(getattr(file_module, self.pydantic_model)).build().model_dump_json()
-        )
+        generated_model: typing.Final[pydantic.BaseModel] = ModelFactory.create_factory(
+            getattr(file_module, self.pydantic_model)
+        ).build()
+        sys.stdout.write(generated_model.model_dump_json(by_alias=True))
 
 
 def main() -> None:
