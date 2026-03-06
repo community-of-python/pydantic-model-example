@@ -6,9 +6,7 @@ import pytest
 
 
 def run_cli_cmd(arguments: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
-        ["pydantic-model-example", *arguments], capture_output=True, text=True
-    )
+    return subprocess.run(["pydantic-model-example", *arguments], capture_output=True, text=True)  # noqa: PLW1510, S603, S607
 
 
 @pytest.fixture
@@ -33,10 +31,7 @@ def test_cli_cmd_with_nonexistent_file() -> None:
     run_result: typing.Final = run_cli_cmd(["/nonexistent/file.py", "SomeModel"])
 
     assert run_result.returncode != 0
-    assert (
-        "Validation error" in run_result.stderr
-        or "Path does not point to a file" in run_result.stderr
-    )
+    assert "Validation error" in run_result.stderr or "Path does not point to a file" in run_result.stderr
 
 
 def test_cli_cmd_with_missing_attribute(example_file_path: str) -> None:
