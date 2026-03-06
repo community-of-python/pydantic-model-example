@@ -1,4 +1,5 @@
 import importlib.util
+import os
 import pathlib
 import sys
 import typing
@@ -27,4 +28,9 @@ class Settings(pydantic_settings.BaseSettings):
 
 
 def main() -> None:
+    sys.path.insert(0, ".")  # for `uv run --with pydantic-model-example`
+    if site_packages := next(  # for `uvx pydantic-model-example`
+        (pathlib.Path.cwd() / ".venv" / "lib").glob("python*/site-packages"), None
+    ):
+        sys.path.insert(0, str(site_packages))
     pydantic_settings.CliApp.run(Settings)
