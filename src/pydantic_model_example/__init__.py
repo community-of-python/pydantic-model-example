@@ -1,15 +1,18 @@
+import typing
+
 import pydantic
-from pydantic_settings import BaseSettings, CliApp, CliPositionalArg
+import pydantic_settings
 
 
-class Settings(BaseSettings):
-    file_path: CliPositionalArg[pydantic.FilePath]
-    pydantic_model: CliPositionalArg[str]
+@typing.final
+class Settings(pydantic_settings.BaseSettings):
+    file_path: pydantic_settings.CliPositionalArg[pydantic.FilePath]
+    pydantic_model: pydantic_settings.CliPositionalArg[str]
 
-    def cli_cmd(self) -> None:
-        # TODO: import file path, 
+    def cli_cmd(self) -> None:  # noqa: COP007,COP009
+        # TODO: import file path, find attribute called pydantic_model
         print(self.model_dump())
 
 
 def main() -> None:
-    CliApp.run(Settings)
+    pydantic_settings.CliApp.run(Settings)
